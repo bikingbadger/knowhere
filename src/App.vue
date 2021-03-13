@@ -13,7 +13,7 @@
 </template>
 
 <script>
-import "./assets/system-background.jpg";
+import "./assets/system-background.webp";
 
 export default {
   name: "App",
@@ -33,7 +33,7 @@ export default {
   position: absolute;
   top: 0;
   left: 0;
-  background: url("./assets/system-background.jpg") no-repeat center center;
+  background: url("./assets/system-background.webp") no-repeat center center;
   background-size: cover;
   background-color: red;
   /* transform: scale(1.1); */
