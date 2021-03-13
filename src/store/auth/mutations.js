@@ -9,11 +9,11 @@ export default {
     state.errorMsg = "";
     state.firebaseId = userData.firebaseId;
     state.token = userData.token;
-    state.createdAt = userData.user.createdAt;
-    state.credits = userData.user.credits;
-    state.gameId = userData.user.id;
-    state.updatedAt = userData.user.updatedAt;
-    state.username = userData.user.username;
+    state.createdAt = userData.createdAt;
+    state.credits = userData.credits;
+    state.gameId = userData.id;
+    state.updatedAt = userData.updatedAt;
+    state.username = userData.username;
 
     router.replace({ path: "home" });
   },

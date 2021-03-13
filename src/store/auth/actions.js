@@ -50,7 +50,8 @@ export default {
         //   email: payload.email
         // };
         user = {
-          ...user,
+          ...user.user,
+          token: user.token,
           firebaseId: userCredential.user.uid,
           email: payload.email
         };
