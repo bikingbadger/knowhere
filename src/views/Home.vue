@@ -1,12 +1,20 @@
 <template>
-  <div class="home"></div>
+  <div class="home">
+    <h1>Welcome</h1>
+    {{ getUser }}
+    <systems-map></systems-map>
+  </div>
 </template>
 
 <script>
-// @ is an alias to /src
+import { mapGetters } from "vuex";
+import SystemsMap from "@/components/SystemsMap";
 
 export default {
   name: "Home",
-  components: {}
+  components: { SystemsMap },
+  computed: {
+    ...mapGetters("auth", ["getUser"])
+  }
 };
 </script>
