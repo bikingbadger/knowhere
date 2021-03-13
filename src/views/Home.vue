@@ -1,7 +1,7 @@
 <template>
   <div class="home">
     <h1>Welcome</h1>
-    {{ getUser }}
+    <div class="white--text">{{ getUser }}</div>
     <systems-map></systems-map>
   </div>
 </template>
