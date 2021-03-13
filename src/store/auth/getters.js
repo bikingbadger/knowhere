@@ -3,6 +3,7 @@ export default {
     return state.isLoggedIn;
   },
   getUser(state) {
+    console.log(state);
     return { username: state.username, token: state.token };
   }
 };

@@ -4,7 +4,9 @@
     <v-app-bar app dark>
       <v-app-bar-title>Knowhere</v-app-bar-title>
       <v-spacer></v-spacer>
-      <v-btn text link to="/register">Register</v-btn>
+      <v-btn v-if="!isLoggedIn" text link to="/login">Login</v-btn>
+      <v-btn v-if="!isLoggedIn" text link to="/register">Register</v-btn>
+      <v-btn v-if="isLoggedIn" text link @click="logout">Logout</v-btn>
     </v-app-bar>
     <v-main>
       <router-view />
@@ -13,16 +15,23 @@
 </template>
 
 <script>
+import { mapGetters, mapActions } from "vuex";
 import "./assets/system-background.webp";
 
 export default {
   name: "App",
-
-  components: {},
-
   data: () => ({
     //
-  })
+  }),
+  computed: {
+    ...mapGetters("auth", ["isLoggedIn"])
+  },
+  methods: {
+    ...mapActions("auth", ["logout", "setUser"])
+  },
+  mounted() {
+    this.setUser();
+  }
 };
 </script>
 

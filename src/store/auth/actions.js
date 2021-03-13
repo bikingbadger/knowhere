@@ -76,18 +76,21 @@ export default {
         commit("logout");
       });
   },
-  async getUser(context) {
+  async setUser(context) {
     if (firebase.auth().currentUser) {
       const fbUser = firebase.auth().currentUser;
-      const snapshot = await userRef.where("id", "==", fbUser.uid).get();
-
+      console.log("setUser", fbUser);
+      const snapshot = await userRef
+        .where("firebaseId", "==", fbUser.uid)
+        .get();
+      console.log("setUser", snapshot);
       if (snapshot.empty) {
         console.log("No matching documents.");
         return;
       }
 
       const userData = snapshot.docs[0].data();
-      context.commit("getUser", userData);
+      context.commit("setUser", userData);
     }
   }
 };

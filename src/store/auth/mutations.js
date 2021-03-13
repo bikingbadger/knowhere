@@ -31,11 +31,17 @@ export default {
     router.replace({ path: "login" });
   },
 
-  getUser(state, userData) {
-    state.username = userData.username;
-    state.name = userData.name;
-    state.id = userData.id;
-    state.email = userData.email;
+  setUser(state, userData) {
     state.isLoggedIn = true;
+    state.email = userData.email;
+    state.registrationError = false;
+    state.errorMsg = "";
+    state.firebaseId = userData.firebaseId;
+    state.token = userData.token;
+    state.createdAt = userData.createdAt;
+    state.credits = userData.credits;
+    state.gameId = userData.id;
+    state.updatedAt = userData.updatedAt;
+    state.username = userData.username;
   }
 };
