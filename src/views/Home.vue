@@ -1,7 +1,8 @@
 <template>
   <div class="home">
-    <h1>Welcome</h1>
+    <h1>Welcome to {{ getSystemName }}</h1>
     <div class="white--text">{{ getUser }}</div>
+    <div>{{ getLocations }}</div>
     <systems-map></systems-map>
   </div>
 </template>
@@ -14,7 +15,8 @@ export default {
   name: "Home",
   components: { SystemsMap },
   computed: {
-    ...mapGetters("auth", ["getUser"])
+    ...mapGetters("auth", ["getUser"]),
+    ...mapGetters("systems", ["getLocations", "getSystemName"])
   }
 };
 </script>

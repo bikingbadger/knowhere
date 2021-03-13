@@ -17,6 +17,7 @@
 <script>
 import { mapGetters, mapActions } from "vuex";
 import "./assets/system-background.webp";
+import firebase from "@/utilities/firebase";
 
 export default {
   name: "App",
@@ -27,10 +28,15 @@ export default {
     ...mapGetters("auth", ["isLoggedIn"])
   },
   methods: {
-    ...mapActions("auth", ["logout", "setUser"])
+    ...mapActions("auth", ["logout", "setUser"]),
+    ...mapActions("systems", ["setLocations"])
   },
-  mounted() {
-    this.setUser();
+  async mounted() {
+    await this.setUser();
+
+    if (firebase.auth().currentUser) {
+      await this.setLocations();
+    }
   }
 };
 </script>

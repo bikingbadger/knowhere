@@ -1,6 +1,6 @@
-import authActions from "./actions";
-import authMutations from "./mutations";
-import authGetters from "./getters";
+import authActions from "./authActions";
+import authMutations from "./authMutations";
+import authGetters from "./authGetters";
 
 export default {
   namespaced: true,

@@ -4,7 +4,6 @@ const userRef = firebase.firestore().collection("/user");
 
 export default {
   login(context, payload) {
-    console.log(context, payload);
     firebase
       .auth()
       .signInWithEmailAndPassword(payload.email, payload.password)
@@ -28,7 +27,6 @@ export default {
 
     // create user from form
     let user = await response.json();
-    console.log(user);
 
     // create a firebase user
     await firebase
@@ -43,24 +41,16 @@ export default {
         }
       )
       .then((userCredential) => {
-        // const userData = {
-        //   firebaseId: userCredential.user.uid,
-        //   // name: payload.name,
-        //   username: payload.username,
-        //   email: payload.email
-        // };
         user = {
           ...user.user,
           token: user.token,
           firebaseId: userCredential.user.uid,
           email: payload.email
         };
-        console.log(user);
 
         userRef
           .add(user)
-          .then((docRef) => {
-            console.log("User created with ID: ", docRef.id);
+          .then(() => {
             context.commit("authSuccess", user);
           })
           .catch((error) => {
@@ -79,13 +69,11 @@ export default {
   async setUser(context) {
     if (firebase.auth().currentUser) {
       const fbUser = firebase.auth().currentUser;
-      console.log("setUser", fbUser);
       const snapshot = await userRef
         .where("firebaseId", "==", fbUser.uid)
         .get();
-      console.log("setUser", snapshot);
       if (snapshot.empty) {
-        console.log("No matching documents.");
+        console.error("No matching documents.");
         return;
       }
 
