@@ -14,13 +14,15 @@
           type="password"
           v-model="password"
         ></v-text-field>
-        <v-btn>Register</v-btn>
+        <v-btn @click="registerUser">Register</v-btn>
       </v-form>
     </v-container>
   </div>
 </template>
 
 <script>
+import { mapActions } from "vuex";
+
 export default {
   data() {
     return {
@@ -28,6 +30,16 @@ export default {
       email: "",
       password: ""
     };
+  },
+  methods: {
+    ...mapActions("auth", ["register"]),
+    registerUser() {
+      this.register({
+        username: this.username,
+        email: this.email,
+        password: this.password
+      });
+    }
   }
 };
 </script>
