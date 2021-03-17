@@ -1,14 +1,16 @@
 <template>
   <div class="systems">
     <h1>{{ getSystemName }}</h1>
-    <pre>{{ getLocations }}</pre>
+    <systems-map :locations="getLocations"></systems-map>
   </div>
 </template>
 
 <script>
 import { mapGetters } from "vuex";
+import SystemsMap from "@/components/systems/SystemsMap.vue";
 
 export default {
+  components: { SystemsMap },
   props: {
     drawer: null
   },
