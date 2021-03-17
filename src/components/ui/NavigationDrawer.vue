@@ -41,7 +41,6 @@ export default {
         return this.drawer;
       },
       set(value) {
-        console.log(value);
         this.$emit("close", value);
       }
     }
