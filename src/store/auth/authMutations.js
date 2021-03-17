@@ -43,5 +43,10 @@ export default {
     state.gameId = userData.id;
     state.updatedAt = userData.updatedAt;
     state.username = userData.username;
+  },
+
+  takeLoan(state, loan) {
+    console.log(loan);
+    state.loans.push(loan);
   }
 };

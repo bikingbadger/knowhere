@@ -80,5 +80,13 @@ export default {
       const userData = snapshot.docs[0].data();
       context.commit("setUser", userData);
     }
+  },
+  async takeLoan({ commit, state }) {
+    // api.spacetraders.io/users/spacebadger/loans?token=72bd8573-561e-49f5-a2cf-669f4675e000?token=72bd8573-561e-49f5-a2cf-669f4675e000
+    const loanURL = `https://api.spacetraders.io/users/spacebadger/loans?token=72bd8573-561e-49f5-a2cf-669f4675e000?token=${state.token}`;
+    const response = await fetch(loanURL);
+    const loan = await response.json();
+    console.log(loan);
+    commit("takeLoan", loan);
   }
 };
