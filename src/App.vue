@@ -2,12 +2,18 @@
   <v-app dark>
     <span class="system-bg"></span>
     <v-app-bar app dark>
+      <v-icon @click="drawer = !drawer">mdi-apps</v-icon>
       <v-app-bar-title>Knowhere</v-app-bar-title>
       <v-spacer></v-spacer>
       <v-btn v-if="!isLoggedIn" text link to="/login">Login</v-btn>
       <v-btn v-if="!isLoggedIn" text link to="/register">Register</v-btn>
       <v-btn v-if="isLoggedIn" text link @click="logout">Logout</v-btn>
     </v-app-bar>
+
+    <navigation-drawer
+      :drawer="drawer"
+      @close="drawer = $event"
+    ></navigation-drawer>
     <v-main>
       <router-view />
     </v-main>
@@ -18,11 +24,13 @@
 import { mapGetters, mapActions } from "vuex";
 import "./assets/system-background.webp";
 import firebase from "@/utilities/firebase";
+import NavigationDrawer from "./components/ui/NavigationDrawer.vue";
 
 export default {
+  components: { NavigationDrawer },
   name: "App",
   data: () => ({
-    //
+    drawer: null
   }),
   computed: {
     ...mapGetters("auth", ["isLoggedIn"])
