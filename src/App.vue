@@ -3,7 +3,12 @@
     <span class="system-bg"></span>
     <v-app-bar app dark>
       <v-icon @click="drawer = !drawer">mdi-apps</v-icon>
-      <v-img src="@/assets/logo.png" max-height="20" max-width="20" contain></v-img>
+      <v-img
+        src="@/assets/logo.png"
+        max-height="20"
+        max-width="20"
+        contain
+      ></v-img>
       <v-app-bar-title>Knowhere</v-app-bar-title>
       <v-spacer></v-spacer>
       <v-btn v-if="!isLoggedIn" text link to="/login">Login</v-btn>
