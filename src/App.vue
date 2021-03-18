@@ -3,6 +3,7 @@
     <span class="system-bg"></span>
     <v-app-bar app dark>
       <v-icon @click="drawer = !drawer">mdi-apps</v-icon>
+      <v-img src="@/assets/logo.png" max-height="20" max-width="20" contain></v-img>
       <v-app-bar-title>Knowhere</v-app-bar-title>
       <v-spacer></v-spacer>
       <v-btn v-if="!isLoggedIn" text link to="/login">Login</v-btn>
@@ -18,6 +19,8 @@
       <router-view />
     </v-main>
   </v-app>
+
+  <!-- <a href='https://www.freepik.com/vectors/cartoon'>Cartoon vector created by rosapuchalt - www.freepik.com</a> -->
 </template>
 
 <script>

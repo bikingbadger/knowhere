@@ -7,7 +7,7 @@
       :class="[location.type]"
       :style="{ gridColumn: location.xPosition, gridRow: location.yPosition }"
     >
-      {{ location.xPosition }},{{ location.yPosition }}
+      <v-img src="@/assets/Red-Planet.png" contain max-width="40"></v-img>
     </div>
   </v-container>
 </template>
@@ -40,7 +40,7 @@ export default {
 
 .space {
   padding: 1rem;
-  background: red;
+  /* background: red; */
 }
 
 .space::before {
