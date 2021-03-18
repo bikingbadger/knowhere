@@ -7,7 +7,12 @@
       :class="[location.type]"
       :style="{ gridColumn: location.xPosition, gridRow: location.yPosition }"
     >
-      <v-img src="@/assets/Red-Planet.png" contain max-width="40"></v-img>
+      <v-img
+        :src="require(`@/assets/${location.image_source}`)"
+        contain
+        width="40"
+        height="40"
+      ></v-img>
     </div>
   </v-container>
 </template>
@@ -18,11 +23,22 @@ export default {
   computed: {
     mappedLocations() {
       let returnArray = this.locations.map((location) => {
-        console.log(location, Math.round(location.x / 10) + 10);
+        console.log(location.symbol, location.type);
         return {
           xPosition: Math.round(location.x / 10) + 10,
           yPosition: Math.round(location.y / 10) + 10,
+          image_source: `${location.symbol}.png`,
           ...location
+
+          // OE-PM PLANET
+          // OE-CR PLANET
+          // OE-KO PLANET
+          // OE-BO GAS_GIANT
+          // OE-NY ASTEROID
+          // OE-UC PLANET
+          // OE-PM-TR MOON
+          // OE-UC-OB MOON
+          // OE-UC-AD MOON
         };
       });
       return returnArray;
